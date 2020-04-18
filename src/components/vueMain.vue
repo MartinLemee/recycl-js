@@ -10,7 +10,7 @@
             </tr>
             <tr class="items" v-for="(info, index) in infos" :key="index">
                 <td> {{info.nodemande}} </td>
-                <td> {{info.datedemande}} </td>
+                <td><a :href="getUrl(info.datedemande)">{{info.datedemande}}</a></td>
                 <td> {{info.dateenlevement}} </td>
                 <td> {{info.siret}}</td>
                 <td> {{info.notournee}} </td>
@@ -38,11 +38,14 @@ export default {
     },
      methods: {
          fetchData(){
-             axios.get(API_URL + "/api/demande").then(response =>{
+             axios.get(API_URL + "demande").then(response =>{
                 this.infos = response.data.items
                 console.log(this.infos) 
             })
 
+        },
+        getUrl(date) {
+            return API_URL + "demande/" + date;
         }
     }
 
