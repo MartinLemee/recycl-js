@@ -1,16 +1,21 @@
 <template>
   <div class="home">
       <vueMain msg="Main"/>
+      <form>
+        <button @click="onListerDemande()">ListerDemande</button>
+      </form>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import vueMain from '../components/vueMain.vue'
 export default {
   name: 'home',
-  components: {
-    vueMain
+  methods: {
+    onListerDemande() {
+      this.$router.push("listerdemande")
+    }
   }
+
 }
 </script>

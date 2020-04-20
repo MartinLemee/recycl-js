@@ -1,5 +1,9 @@
 <template>
     <div class="main">
+        <div class="search-wrapper">
+            <input type="text" v-model="searchBarDate" @change="searchDate()" placeholder="Date..." />
+        </div>
+        <br>
         <table>
             <tr class="title">
                 <th>n° demande</th>
@@ -10,8 +14,8 @@
             </tr>
             <tr class="items" v-for="(info, index) in infos" :key="index">
                 <td> {{info.nodemande}} </td>
-                <td><a :href="getUrl(info.datedemande)">{{info.datedemande}}</a></td>
-                <td> {{info.dateenlevement}} </td>
+                <td><a :href="getUrl(info.datedemande)">{{(info.datedemande).substring(0, 10)}}</a></td>
+                <td> {{(info.dateenlevement).substring(0, 10)}} </td>
                 <td> {{info.siret}}</td>
                 <td> {{info.notournee}} </td>
                 
@@ -28,10 +32,11 @@ import axios from 'axios';
  import { API_URL } from '../services/config';
 
 export default {
-    name: 'vueMain',
+    name: 'vueDemande',
     data: () => ({
         description :"",
-        infos: ""
+        infos: "",
+        searchBarDate: ""
     }),
     created: function() {
         this.fetchData()
@@ -43,10 +48,19 @@ export default {
                 console.log(this.infos) 
             })
 
-        },
-        getUrl(date) {
+         },
+         getUrl(date) {
             return API_URL + "demande/" + date;
-        }
+         },
+         searchDate() {
+             var searchBarD = this.searchBarDate
+             axios.get(API_URL + "demande/" + (searchBarD.substring(0, 10))).then(response =>{
+                 console.log(searchBarD.substring(0, 10))
+                 this.infos = response.data.items
+                 console.log(this.infos)
+             })
+         }
+
     }
 
 }
