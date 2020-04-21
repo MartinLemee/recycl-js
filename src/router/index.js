@@ -4,6 +4,7 @@ import vueMain from '../views/vueMain.vue'
 import vueDemande from '../views/vueDemande.vue'
 import vueInfoDemande from '../views/vueInfoDemande.vue'
 import vueTypesDechet from '../views/vueTypesDechet.vue'
+import vueListeEmploye from '../views/vueListeEmploye.vue'
 
 
 Vue.use(VueRouter)
@@ -28,6 +29,11 @@ const routes = [
     path: '/listedechet',
     name: 'listedechet',
     component : vueTypesDechet
+  },
+  {
+    path: '/listeemploye',
+    name: 'listeemploye',
+    component : vueListeEmploye
   }
   
 ]

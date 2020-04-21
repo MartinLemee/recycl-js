@@ -1,5 +1,6 @@
 <template>
     <div>
+
          <div class="main">
         <table >
              <tr class="title">

@@ -2,8 +2,8 @@
     <nav>
         <router-link to="/">Home</router-link>
         <router-link to="/listerdemande">Liste Demande</router-link>
-        <router-link to="/entreprise">Liste Entreprises</router-link>
-        <router-link to="/demande">Liste Employe</router-link>
+        <router-link to="/listeentreprise">Liste Entreprises</router-link>
+        <router-link to="/listeemploye">Liste Employe</router-link>
         <router-link to="/listedechet">Liste Types de dechet</router-link>
     </nav>
 </template>
