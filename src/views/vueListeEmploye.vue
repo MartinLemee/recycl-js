@@ -14,8 +14,8 @@
                 <td>{{info.noemploye}}</td>
                 <td>{{info.nom}}</td>
                 <td>{{info.prenom}}</td>
-                <td>{{info.datenaiss}}</td>
-                <td>{{info.dateembauche}}</td>
+                <td>{{(info.datenaiss).substring(0, 10)}}</td>
+                <td>{{(info.dateembauche).substring(0, 10)}}</td>
                 <td>{{info.salaire}}</td>
                 <td>{{info.nofonction}}</td>
             </tr>
