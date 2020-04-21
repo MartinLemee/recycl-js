@@ -2,22 +2,22 @@
     <div class="main">
         <table>
             <tr class="title">
-                <th>n° Employe</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Date de naissance</th>
-                <th>Date d'embauche</th>
-                <th>Salaire</th>
-                <th>n° Fonction</th>
+                <th>Raison Sociale</th>
+                <th>n° Rue</th>
+                <th>Code postal</th>
+                <th>Ville</th>
+                <th>n° Tel.</th>
+                <th>Contact</th>
+                <th>Siret</th>
             </tr>
             <tr class="items" v-for="(info, index) in infos" :key="index">
-                <td>{{info.noemploye}}</td>
-                <td>{{info.nom}}</td>
-                <td>{{info.prenom}}</td>
-                <td>{{(info.datenaiss).substring(0, 10)}}</td>
-                <td>{{(info.dateembauche).substring(0, 10)}}</td>
-                <td>{{info.salaire}} €</td>
-                <td>{{info.nofonction}}</td>
+                <td>{{info.raisonsociale}}</td>
+                <td>{{info.norueentr}} {{info.rueentr}}</td>
+                <td>{{info.cpostalentr}}</td>
+                <td>{{info.villeentr}}</td>
+                <td>{{info.notel}}</td>
+                <td>{{info.contact}}</td>
+                <td>{{info.siret}}</td>
             </tr>
         </table>
     </div>
@@ -41,7 +41,7 @@ export default {
     },
      methods: {
          fetchData(){
-             axios.get(API_URL + "listeemploye").then(response =>{
+             axios.get(API_URL + "listeentreprise").then(response =>{
                 this.infos = response.data.items
                 console.log(this.infos) 
             })
