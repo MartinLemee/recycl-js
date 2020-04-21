@@ -13,8 +13,8 @@
                 <th>n° tournee</th>
             </tr>
             <tr class="items" v-for="(info, index) in infos" :key="index">
-                <td> {{info.nodemande}} </td>
-                <td><a :href="getUrl(info.datedemande)">{{(info.datedemande).substring(0, 10)}}</a></td>
+                <td><router-link :to="{ name: 'infodemande', params: { info } }">{{info.nodemande}}</router-link></td>
+                <td>{{(info.datedemande).substring(0, 10)}}</td>
                 <td> {{(info.dateenlevement).substring(0, 10)}} </td>
                 <td> {{info.siret}}</td>
                 <td> {{info.notournee}} </td>
@@ -49,8 +49,8 @@ export default {
             })
 
          },
-         getUrl(date) {
-            return API_URL + "demande/" + date;
+         getInfoDemande() {
+             console.log("test")
          },
          searchDate() {
              var searchBarD = this.searchBarDate
@@ -75,11 +75,17 @@ export default {
         width: 68%;
     }
     table, th, td {
-        border: 1px solid black;
+        border: 1px solid #2a73c7;
+        border-collapse: separate;
     }
     th, td {
         padding: 6px;
         text-align: left;
+    }
+    th {
+        background-color: #2a73c7;
+        color: white;
+        text-align: center;
     }
     .title {
         font-size: 16px;
@@ -92,6 +98,6 @@ export default {
     }
     button {
         margin: 5px;
-        margin-left: -130px;
+        margin-left: -100px;
     }
 </style>
