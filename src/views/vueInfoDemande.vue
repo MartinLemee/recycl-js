@@ -1,5 +1,6 @@
 <template>
-    <div class="main">
+    <div>
+         <div class="main">
         <table >
              <tr class="title">
                 <th>n° Demande</th>
@@ -28,6 +29,7 @@
                 <td>{{infoD.niv_danger}}</td>
             </tr>
         </table>
+        </div>
     </div>
 </template>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -106,8 +108,7 @@ export default {
         width: 18%;
     }
     button {
-        margin: 5px;
-        margin-left: -130px;
+        display: flex;
+        top: -5px;
     }
-    
 </style>
