@@ -21,7 +21,7 @@
         <table class="table2">
             <tr class="title">
                 <th>Type du dechet</th>
-                <th>Quantitée enlevée</th>
+                <th>Quantité enlevée</th>
                 <th>Niveau danger</th>
             </tr>
             <tr class="items" v-for="(infoD, indexD) in infosDechet" :key="indexD">

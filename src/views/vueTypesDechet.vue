@@ -1,13 +1,24 @@
 <template>
     <div class="main">
+        <button @click="preYear">Année Précédente</button>
+        <button @click="nextYear">Année Suivante</button>
+         <FunctionalCalendar
+        class= "calendar"
+        v-model="calendarData"
+        :date-format="'yyyy-mm-dd'"
+        :is-date-range="true"
+        :change-year-function="true"
+        ref="Calendar"      
+        ></FunctionalCalendar>
+        <button @click="sortDate">Trier</button>
         <table>
             <tr class="title">
                 <th>Nom déchet</th>
-                <th>Niveau de danger</th>
+                <th>Quantitée Enlevée</th>
             </tr>
             <tr class="items" v-for="(info, index) in infos" :key="index">
                 <td>{{info.nomtypedechet}}</td>
-                <td>{{info.niv_danger}}</td>
+                <td>{{info.quantiteenlevee}}</td>
             </tr>
         </table>
     </div>
@@ -18,17 +29,22 @@
 <script>
 import router from "../router"; 
 import axios from 'axios';
- import { API_URL } from '../services/config';
+import { FunctionalCalendar } from 'vue-functional-calendar'
+import { API_URL } from '../services/config';
 
 export default {
     name: 'vueDemande',
     data: () => ({
         description :"",
         infos: "",
-        searchBarDate: ""
+        searchBarDate: "",
+        calendarData: {}
     }),
     created: function() {
         this.fetchData()
+    },
+    components: {
+        FunctionalCalendar
     },
      methods: {
          fetchData(){
@@ -37,6 +53,21 @@ export default {
                 console.log(this.infos) 
             })
 
+         },
+         sortDate() {
+             var dateDebut = this.calendarData.dateRange.start.date
+             var dateFin = this.calendarData.dateRange.end.date
+
+              axios.get(API_URL + "typedechettotal/" + dateDebut + "/" + dateFin).then(response =>{
+                this.infos = response.data.items
+                console.log(this.infos) 
+            })
+         },
+         preYear() {
+             this.$refs.Calendar.PreYear();
+         },
+         nextYear() {
+             this.$refs.Calendar.NextYear();
          },
 
     }
@@ -76,6 +107,11 @@ export default {
     }
     button {
         margin: 5px;
-        margin-left: -100px;
     }
+    .calendar {
+        width: 20%;
+        border-radius: 100%;
+        margin: 0 auto;
+}
+    
 </style>

@@ -54,8 +54,8 @@ export default {
          },
          searchDate() {
              var searchBarD = this.searchBarDate
-             axios.get(API_URL + "demande/" + (searchBarD.substring(0, 10))).then(response =>{
-                 console.log(searchBarD.substring(0, 10))
+             console.log(searchBarD)
+             axios.get(API_URL + "demande/" + searchBarD).then(response =>{
                  this.infos = response.data.items
                  console.log(this.infos)
              })

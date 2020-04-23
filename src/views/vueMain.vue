@@ -2,7 +2,7 @@
   <div class="home">
       <vueMain msg="Main"/>
       <form>
-        <button @click="onListerDemande()">ListerDemande</button>
+        Home
       </form>
   </div>
 </template>
