@@ -2,6 +2,8 @@
     <div class="main">
         <div class="search-wrapper">
             <input type="text" v-model="searchBarDate" @change="searchDate()" placeholder="Date..." />
+            <button @click="emptyTournee"  class="buttonEmpty">Tournée vide</button>
+            <button @click="fetchData"  class="buttonAll">Tout Afficher</button>
         </div>
         <br>
         <table>
@@ -59,6 +61,12 @@ export default {
                  this.infos = response.data.items
                  console.log(this.infos)
              })
+         },
+         emptyTournee() {
+             axios.get(API_URL + "demandesvide").then(response =>{
+                 this.infos = response.data.items
+                 console.log(this.infos)
+             })
          }
 
     }
@@ -98,6 +106,5 @@ export default {
     }
     button {
         margin: 5px;
-        margin-left: -100px;
     }
 </style>
